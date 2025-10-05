@@ -1,6 +1,27 @@
 import React from 'react';
-// import Image from 'next/image'; 
 import Link from 'next/link';
+import Image from 'next/image';
+
+const TRAVEL_BAG_ICON_URL = "/assets/icons/bag.png";
+
+// 2. Search Icon Component (Kept locally for convenience, but simplified to only contain the SVG path)
+const SearchIcon = ({ className = 'h-5 w-5' }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className={className}
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+    >
+        <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        />
+    </svg>
+);
+
 
 const Header: React.FC = () => {
   const accommodationTypes = [
@@ -14,7 +35,7 @@ const Header: React.FC = () => {
     { name: 'Beach house', icon: '/icons/beach_house.svg' },
     { name: 'Island', icon: '/icons/island.svg' },
     { name: 'Camping', icon: '/icons/camping.svg' },
-    { name: 'Apartment', icon: '/icons/apartment.svg' },
+    { name: 'Apartment', 'icon': '/icons/apartment.svg' },
     { name: 'House', icon: '/icons/house.svg' },
     { name: 'Lakefront', icon: '/icons/lakefront.svg' },
     { name: 'Farm house', icon: '/icons/farm_house.svg' },
@@ -29,20 +50,17 @@ const Header: React.FC = () => {
       {/* Top Info Bar */}
       <div className="bg-emerald-600 text-white text-center py-2 text-sm">
         <div className="container mx-auto flex justify-center items-center gap-2">
-          {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-            />
-          </svg> */}
+          
+          {/* Using Next.js Image component for the icon */}
+          {/* NOTE: If the SVG file is complex, you may need to specify width/height */}
+          <Image 
+            src={TRAVEL_BAG_ICON_URL} 
+            alt="Travel Guide" 
+            width={20} // Adjusted to match the visual size of h-5 w-5 (20px)
+            height={20} 
+            className="w-5 h-5"
+          />
+          
           <span>Overseas trip? Get the latest information on travel guides</span>
           <Link href="#" className="ml-4 bg-gray-800 text-white px-3 py-1 rounded-full hover:bg-gray-700">
             More Info
@@ -94,20 +112,8 @@ const Header: React.FC = () => {
                 />
               </div>
               <button className="bg-orange-500 text-white p-3 rounded-full ml-2 -mr-1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
+                {/* Using the SearchIcon component */}
+                <SearchIcon className="h-5 w-5" />
               </button>
             </div>
           </div>
@@ -135,7 +141,7 @@ const Header: React.FC = () => {
                 type.name === 'Villa' ? 'border-gray-800' : 'border-transparent'
               } text-gray-700 hover:border-gray-400`}
             >
-              {/* Replace with actual SVG/Image components for icons */}
+              {/* NOTE: These use placeholder paths and assume you have static SVG files */}
               <img src={type.icon} alt={type.name} className="h-6 w-6 mb-1" />
               <span className="text-xs font-medium">{type.name}</span>
             </Link>
