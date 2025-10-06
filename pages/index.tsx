@@ -7,7 +7,7 @@ import { HERO_IMAGE_URL, PROPERTYLISTINGSAMPLE } from "@/constants";
 // 1. Hero Section Component
 const HeroSection = () => {
   return (
-    <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
+    <div className="relative w-full h-[600px] rounded-lg overflow-hidden">
       <Image
         src={HERO_IMAGE_URL}
         alt="Scenic view with a lake and mountains"
@@ -15,7 +15,7 @@ const HeroSection = () => {
         style={{ objectFit: 'cover' }}
         className="rounded-lg"
       />
-      <div className="absolute inset-0 bg-black bg-opacity-30 rounded-lg flex flex-col justify-center items-center text-white text-center p-4">
+      <div className="absolute inset-0 bg-opacity-5 rounded-lg flex flex-col justify-center items-center text-white text-center p-4">
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
           Find your favorite place here!
         </h1>
@@ -60,7 +60,7 @@ const FilterSection = () => {
 const ListingSection = () => {
   return (
     <section className="py-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
         {PROPERTYLISTINGSAMPLE.map((property) => (
           <PropertyCard key={property.name} property={property} />
         ))}

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const TRAVEL_BAG_ICON_URL = "/assets/icons/bag.png";
+const LOGO = "/assets/images/logo.png";
 
 // 2. Search Icon Component (Kept locally for convenience, but simplified to only contain the SVG path)
 const SearchIcon = ({ className = 'h-5 w-5' }) => (
@@ -25,38 +26,40 @@ const SearchIcon = ({ className = 'h-5 w-5' }) => (
 
 const Header: React.FC = () => {
   const accommodationTypes = [
-    { name: 'Rooms', icon: '/icons/rooms.svg' }, // Placeholder paths for icons
-    { name: 'Mansion', icon: '/icons/mansion.svg' },
-    { name: 'Countryside', icon: '/icons/countryside.svg' },
-    { name: 'Villa', icon: '/icons/villa.svg' },
-    { name: 'Tropical', icon: '/icons/tropical.svg' },
-    { name: 'New', icon: '/icons/new.svg' },
-    { name: 'Amazing pool', icon: '/icons/amazing_pool.svg' },
-    { name: 'Beach house', icon: '/icons/beach_house.svg' },
-    { name: 'Island', icon: '/icons/island.svg' },
-    { name: 'Camping', icon: '/icons/camping.svg' },
-    { name: 'Apartment', 'icon': '/icons/apartment.svg' },
-    { name: 'House', icon: '/icons/house.svg' },
-    { name: 'Lakefront', icon: '/icons/lakefront.svg' },
-    { name: 'Farm house', icon: '/icons/farm_house.svg' },
-    { name: 'Treehouse', icon: '/icons/treehouse.svg' },
-    { name: 'Cabins', icon: '/icons/cabins.svg' },
-    { name: 'Castles', icon: '/icons/castles.svg' },
-    { name: 'Lakeside', icon: '/icons/lakeside.svg' },
+    { name: 'Living Room', icon: '/assets/icons/living-room.svg' },
+    { name: 'Rooms', icon: '/assets/icons/rooms.svg' },
+    { name: 'Mansion', icon: '/assets/icons/mansion.svg' },
+    { name: 'Countryside', icon: '/assets/icons/countryside.svg' },
+    { name: 'Villa', icon: '/assets/icons/villa.svg' },
+    { name: 'Tropical', icon: '/assets/icons/tropical.svg' },
+    { name: 'New', icon: '/assets/icons/new.svg' },
+    { name: 'Amazing pool', icon: '/assets/icons/amazing_pool.svg' },
+    { name: 'Beach house', icon: '/assets/icons/beach_house.svg' },
+    { name: 'Island', icon: '/assets/icons/island.svg' },
+    { name: 'Camping', icon: '/assets/icons/camping.svg' },
+    { name: 'Apartment', icon: '/assets/icons/apartment.svg' },
+    { name: 'House', icon: '/assets/icons/house.svg' },
+    { name: 'Lakefront', icon: '/assets/icons/lakefront.svg' },
+    { name: 'Farm house', icon: '/assets/icons/farm_house.svg' },
+    { name: 'Treehouse', icon: '/assets/icons/treehouse.svg' },
+    { name: 'Cabins', icon: '/assets/icons/cabins.svg' },
+    { name: 'Castles', icon: '/assets/icons/castles.svg' },
+    { name: 'Lakeside', icon: '/assets/icons/lakeside.svg' },
+    { name: 'SWimming pool', icon: '/assets/icons/pool.svg' },
+    { name: 'Vacation', icon: '/assets/icons/vacation.svg' },
+    { name: 'Cottage', icon: '/assets/icons/cottage.svg' },
   ];
 
   return (
     <header className="w-full">
       {/* Top Info Bar */}
       <div className="bg-emerald-600 text-white text-center py-2 text-sm">
-        <div className="container mx-auto flex justify-center items-center gap-2">
+        <div className="w-[90%] mx-auto flex justify-center items-center gap-2">
           
-          {/* Using Next.js Image component for the icon */}
-          {/* NOTE: If the SVG file is complex, you may need to specify width/height */}
           <Image 
             src={TRAVEL_BAG_ICON_URL} 
             alt="Travel Guide" 
-            width={20} // Adjusted to match the visual size of h-5 w-5 (20px)
+            width={20}
             height={20} 
             className="w-5 h-5"
           />
@@ -70,14 +73,20 @@ const Header: React.FC = () => {
 
       {/* Main Header */}
       <div className="border-b border-gray-200">
-        <div className="container mx-auto py-4 px-4 flex items-center justify-between">
+        <div className="w-[90%] mx-auto py-4 px-4 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <h1 className="text-3xl font-bold text-gray-800">alx</h1>
+          <Link href="/" className="flex-shrink-0 inline-flex items-center">
+            <Image
+              src={LOGO}
+              alt="ALX Listing"
+              width={120}
+              height={34}
+              className="object-contain"
+            />
           </Link>
 
           {/* Search Bar */}
-          <div className="flex-grow flex justify-center mx-8">
+          <div className="flex-grow flex justify-center mx-9">
             <div className="flex border border-gray-300 rounded-full shadow-sm">
               <div className="flex flex-col border-r px-4 py-2 hover:bg-gray-100 cursor-pointer rounded-l-full">
                 <span className="text-xs font-semibold">Location</span>
@@ -111,7 +120,7 @@ const Header: React.FC = () => {
                   className="text-sm border-none focus:outline-none bg-transparent w-24"
                 />
               </div>
-              <button className="bg-orange-500 text-white p-3 rounded-full ml-2 -mr-1">
+              <button className="bg-orange-500 text-white p-5 rounded-full m-1 ml-2 mr-2">
                 {/* Using the SearchIcon component */}
                 <SearchIcon className="h-5 w-5" />
               </button>
@@ -131,7 +140,7 @@ const Header: React.FC = () => {
       </div>
 
       {/* Accommodation Types */}
-      <div className="container mx-auto py-3 px-4 overflow-x-auto whitespace-nowrap scrollbar-hide">
+  <div className="w-[90%] mx-auto py-3 px-4 overflow-x-auto whitespace-nowrap scrollbar-hide">
         <nav className="flex space-x-8">
           {accommodationTypes.map((type) => (
             <Link
